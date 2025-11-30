@@ -1,0 +1,312 @@
+.wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+body {
+    background-color: #f3f5f7;
+}
+
+/* 头部 */
+.header {
+    height: 100px;
+    background-color: #fff;
+}
+.header .wrapper {
+    padding-top: 29px;
+    display: flex;
+}
+/* logo */
+.logo a {
+    display: block;
+    width: 125px;
+    height: 60px;
+    background-image: url(./guangdong/logo.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    font-size: 0;
+}
+/* 导航 */
+.nev {
+    margin-left: 102px;
+}
+.nev ul {
+    display: flex;
+}
+.nev li {
+    margin-right: 24px;
+}
+.nev li a {
+    display: block;
+    padding: 6px 8px;
+    font-size: 19px;
+    line-height: 27px;
+}
+.nev li .active,
+.nev li a:hover {
+    border-bottom: 3px solid #f74f4f;
+}
+/* 搜索 */
+.search {
+    display: flex;
+    width: 412px;
+    height: 40px;
+    background-color: #f3f5f7;
+    border-radius: 20px;
+    margin-left: 64px;
+    padding: 0 12px 0 19px;
+}
+.search input {
+    border: 0;
+    flex: 1;
+    background-color: transparent;
+    outline: none;
+}
+.search input::placeholder {
+    font-size: 14px;
+    color: #999;
+}
+
+/* 父级是flex布局 */
+.search a {
+    background-image: url(./guangdong/fangdajing.png);
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    align-self: center;
+}
+.user {
+    margin-top: 4px;
+    margin-left: 32px;
+}
+.user a img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin-right: 7px;
+    vertical-align:middle;
+}
+.user span {
+    color: #666;
+    font-size: 16px;
+}
+ 
+/* banner区域 */
+.banner {
+    height: 420px;
+    background-color: #f7ffe6;
+}
+.banner .wrapper {
+    display: flex;
+    height: 420px;
+    background-image: url(./guangdong/map.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 侧导航 */
+.banner .left {
+    padding: 3px 20px;
+    width: 191px;
+    height: 420px;
+    background-color: rgba(0,0,0,0.38);
+}
+
+.banner .left a {
+    display: block;
+    height: 84px;
+    line-height: 80px;
+    font-size: 16px;
+    color: #fff; 
+}
+
+.banner .left a:hover {
+    font-size: 17px;
+    color: #5cc6ff;
+}
+
+/* 推荐 */
+.recommend {
+    display: flex;
+    height: 60px;
+    padding: 0 20px;
+    margin-top: 12px;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(211, 211,211 , 0.5);
+    line-height: 60px;
+}
+
+.recommend h3 {
+    font-size: 18px;
+    color: #f74f4f;
+    font-weight: 400;
+}
+.recommend ul {
+    display: flex;
+    flex: 1;
+}
+.recommend li a {
+    padding: 0 24px;
+    border-right: 1px solid #e0e0e0;
+    font-size: 17px;
+}
+.recommend ul li:last-child a {
+    border-right: 0;
+}
+.recommend li a:hover {
+    font-size: 18px;
+}
+.recommend .modify {
+    font-size: 16px;
+    color: #f74f4f;
+}
+
+/* 景点推荐 */
+.class {
+    margin: 15px;
+}
+/* 公共样式,与后面公用 */
+.head {
+    display: flex;
+    justify-content: space-between;
+    line-height: 60px;
+    height: 60px;
+}
+.head h3 {
+    font-size: 21px;
+    font-weight: 400;
+}
+.head .more {
+    font-size: 14px;
+    color: #999;
+}
+.bd ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.bd li {
+    margin-bottom: 14px;
+    width: 228px;
+    height: 271px;
+    
+}
+.bd li .pic {
+    height: 156px;
+}
+.bd li .pic img {
+    height: 156px;
+    width: 228px;
+}
+.bd li .test {
+    padding: 20px;
+    height: 115px;
+    background-color: #fff;
+}
+.bd li .test h4 {
+    height: 40px;
+    margin-bottom: 13px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.bd li .test p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+}
+.bd li .test p span {
+    font-size: 14px;
+    line-height: 20px;
+    color: #fa4141;
+}
+
+/* 城市推荐 */
+.head ul {
+    display: flex;
+    margin-left: 100px;
+}
+.head li {
+    font-size: 18px;
+    margin-right: 80px;
+}
+.head ul li .active{
+    font-size: 20px;
+    border-bottom: 2px solid #f74f4f;
+}
+.head ul li a:hover {
+    font-size: 20px;
+}
+
+.bd {
+    display: flex;
+    justify-content: space-between;
+}
+.bd .left {
+    width: 228px;
+}
+.bd .left img {
+    width: 228px;
+    height: 390px;
+}
+.bd .right {
+    width: 957px;
+}
+.bd .right .top1 {
+    margin-bottom: 15px;
+}
+.bd .top1 img {
+    width: 957px;
+    height: 100px;
+}
+
+/* 版权区域 */
+.fotter {
+    margin-top: 60px;
+    padding-top: 60px;
+    height: 273px;
+    background-color: #fff;
+}
+.fotter .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.fotter .left {
+    width: 500px;
+}
+.fotter .left img {
+    margin-top: -40px;
+    width: 300px;
+    height: 105px;
+}
+.fotter .left p {
+    margin-top: 24px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #666;
+}
+.fotter .left .moree {
+    display: block;
+    width: 120px;
+    height: 36px;
+    border: 2px solid #f74f4f;
+    text-align: center;
+    font-size: 16px;
+    color: #f74f4f;
+    line-height: 34px;
+}
+.fotter .right {
+    display: flex;
+}
+.fotter .right dl {
+    margin-left: 130px;
+}
+.fotter .right dt {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+.fotter .right a {
+    font-size: 14px;
+    color: #666;
+}
