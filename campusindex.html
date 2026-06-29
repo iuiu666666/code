@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>校园跑腿服务平台</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft Yahei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 页面整体网格布局 */
+        .app-container {
+            display: grid;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background-color: white;
+            color: #667eea;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 主内容区域 */
+        main {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* 功能模块样式 - 默认隐藏 */
+        .module {
+            display: none;
+        }
+
+        .module.active {
+            display: block;
+        }
+
+        .module-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            text-align: center;
+        }
+
+        /* 表单居中核心样式 */
+        .form-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-item {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+            font-size: 16px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+            resize: none;
+            min-height: 110px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background-color: #667eea;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background-color: #5a6edb;
+        }
+
+        .secondary-btn {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .secondary-btn:hover {
+            background-color: #e9ecef;
+        }
+
+        /* 底部提示小字 */
+        .tip-text{
+            font-size:13px;
+            color:#888;
+            margin-top:15px;
+            text-align: left;
+        }
+
+        /* 卡片列表样式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        /* 底部样式 */
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* 通知公告样式 */
+        .notice-list {
+            line-height: 1.8;
+        }
+
+        .notice-list p {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1>校园跑腿&闲置交易平台</h1>
+            <p>你的校园生活好帮手</p>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" onclick="showModule('orderModule')">我要跑腿下单</button>
+            <button class="nav-btn" onclick="showModule('listModule')">跑腿订单展示</button>
+            <button class="nav-btn" onclick="showModule('goodsPublishModule')">发布闲置商品</button>
+            <button class="nav-btn" onclick="showModule('goodsModule')">闲置市场</button>
+            <button class="nav-btn" onclick="showModule('noticeModule')">校园公告</button>
+        </nav>
+
+        <main>
+            <!-- 模块1: 跑腿下单 -->
+            <section id="orderModule" class="module active">
+                <h2 class="module-title">跑腿下单</h2>
+                <div class="form-box">
+                    <div class="form-item">
+                        <label for="stuId">学号：</label>
+                        <input type="text" id="stuId" placeholder="请输入完整学号">
+                    </div>
+                    <div class="form-item">
+                        <label for="name">姓名：</label>
+                        <input type="text" id="name" placeholder="请输入姓名">
+                    </div>
+                    <div class="form-item">
+                        <label for="build">宿舍楼：</label>
+                        <input type="text" id="build" placeholder="如：南4">
+                    </div>
+                    <div class="form-item">
+                        <label for="type">服务类型：</label>
+                        <select id="type">
+                            <option>快递代取</option>
+                            <option>食堂代买</option>
+                            <option>文件代送</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="desc">备注：</label>
+                        <textarea id="desc" placeholder="如：要微辣，快递在北门"></textarea>
+                    </div>
+                    <div class="form-item">
+                        <label for="money">酬劳(元)：</label>
+                        <input type="number" id="money" value="5">
+                    </div>
+                    <div class="btn-group">
+                        <button class="action-btn primary-btn" onclick="copyOrder()">复制订单信息</button>
+                        <button class="action-btn secondary-btn" onclick="addOrderToPage()">手动添加到页面</button>
+                    </div>
+                    <p class="tip-text">注：需先复制订单，到相应位置储存后，再手动添加页面</p>
+                </div>
+            </section>
+
+            <!-- 模块2: 跑腿订单展示 -->
+            <section id="listModule" class="module">
+                <h2 class="module-title">已发布跑腿订单</h2>
+                <div id="orderList" class="card-grid">
+                </div>
+            </section>
+
+            <!-- 模块3：发布闲置商品（新增闲置填写表单） -->
+            <section id="goodsPublishModule" class="module">
+                <h2 class="module-title">发布闲置商品</h2>
+                <div class="form-box">
+                    <div class="form-item">
+                        <label for="goodStuId">卖家学号：</label>
+                        <input type="text" id="goodStuId" placeholder="请输入你的完整学号">
+                    </div>
+                    <div class="form-item">
+                        <label for="goodName">商品名称：</label>
+                        <input type="text" id="goodName" placeholder="如：四级复习资料">
+                    </div>
+                    <div class="form-item">
+                        <label for="goodPrice">售价(元)：</label>
+                        <input type="number" id="goodPrice" placeholder="15">
+                    </div>
+                    <div class="form-item">
+                        <label for="goodDesc">商品描述：</label>
+                        <textarea id="goodDesc" placeholder="简单描述商品成色、配件等"></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button class="action-btn primary-btn" onclick="copyGoodsInfo()">复制闲置商品信息</button>
+                        <button class="action-btn secondary-btn" onclick="addGoodsToPage()">手动添加到闲置市场</button>
+                    </div>
+                    <p class="tip-text">注：需先复制商品信息，在Python后端保存后，再添加到页面展示</p>
+                </div>
+            </section>
+
+            <!-- 模块4: 闲置市场 -->
+            <section id="goodsModule" class="module">
+                <h2 class="module-title">闲置市场</h2>
+                <div id="goodsList" class="card-grid">
+                    <div class="card">
+                        <h3 class="card-title">四级复习资料</h3>
+                        <p><strong>卖家：</strong>2024003</p>
+                        <p><strong>售价：</strong>15元</p>
+                        <p><strong>描述：</strong>几乎全新，包含真题+词汇手册</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">宿舍小台灯</h3>
+                        <p><strong>卖家：</strong>2024004</p>
+                        <p><strong>售价：</strong>20元</p>
+                        <p><strong>描述：</strong>可充电护眼台灯，三种灯光模式</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">羽毛球拍</h3>
+                        <p><strong>卖家：</strong>2024005</p>
+                        <p><strong>售价：</strong>45元</p>
+                        <p><strong>描述：</strong>九成新，带原装球线+收纳袋</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 模块5: 校园公告 -->
+            <section id="noticeModule" class="module">
+                <h2 class="module-title">校园公告</h2>
+                <div class="notice-list">
+                    <p><strong>【技能培训】</strong>实验室本周六开展计算机技能培训，请各位同学提前报名。</p>
+                    <p><strong>【考试通知】</strong>英语四级准考证开始打印，打印截止时间为本周五下午17:00。</p>
+                    <p><strong>【安全提醒】</strong>请勿在宿舍内使用大功率违规电器，定期排查宿舍用电安全。</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>-- 2026 校园跑腿&闲置综合项目 --</p>
+            <p style="font-size:12px; color:#dddddd; margin-top:6px;">开发者：谢佩希</p>
+        </footer>
+    </div>
+
+    <script>
+        // 切换模块
+        function showModule(moduleId) {
+            const allModules = document.querySelectorAll('.module');
+            allModules.forEach(module => {
+                module.classList.remove('active');
+            });
+            const activeModule = document.getElementById(moduleId);
+            activeModule.classList.add('active');
+            const allButtons = document.querySelectorAll('.nav-btn');
+            allButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // ========== 跑腿订单相关函数 ==========
+        function copyOrder() {
+            const sid = document.getElementById("stuId").value;
+            const name = document.getElementById("name").value;
+            const build = document.getElementById("build").value;
+            const type = document.getElementById("type").value;
+            const desc = document.getElementById("desc").value;
+            const money = document.getElementById("money").value;
+
+            if (!sid || !name || !build || !money) {
+                alert("请先填写必填信息！");
+                return;
+            }
+            const text = `${sid}|${name}|${build}|${type}|${desc}|${money}`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("跑腿订单信息已复制！");
+            });
+        }
+
+        function addOrderToPage() {
+            const sid = document.getElementById("stuId").value;
+            const name = document.getElementById("name").value;
+            const build = document.getElementById("build").value;
+            const type = document.getElementById("type").value;
+            const desc = document.getElementById("desc").value;
+            const money = document.getElementById("money").value;
+
+            if (!sid || !name || !build || !money) {
+                alert("请先填写必填信息！");
+                return;
+            }
+
+            const newCard = document.createElement("div");
+            newCard.className = "card";
+            newCard.innerHTML = `
+                <h3 class="card-title">新跑腿订单</h3>
+                <p><strong>学号：</strong>${sid}</p>
+                <p><strong>姓名：</strong>${name}</p>
+                <p><strong>楼栋：</strong>${build}</p>
+                <p><strong>类型：</strong>${type}</p>
+                <p><strong>备注：</strong>${desc}</p>
+                <p><strong>酬劳：</strong>${money}元</p>
+            `;
+            document.getElementById("orderList").appendChild(newCard);
+
+            // 清空表单
+            document.getElementById("stuId").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("build").value = "";
+            document.getElementById("desc").value = "";
+            document.getElementById("money").value = "5";
+
+            showModule('listModule');
+            alert("跑腿订单已添加成功！");
+        }
+
+        // ========== 闲置商品相关新增函数 ==========
+        // 复制闲置商品信息
+        function copyGoodsInfo(){
+            let goodStuId = document.getElementById("goodStuId").value;
+            let goodName = document.getElementById("goodName").value;
+            let goodPrice = document.getElementById("goodPrice").value;
+            let goodDesc = document.getElementById("goodDesc").value;
+
+            if(!goodStuId || !goodName || !goodPrice){
+                alert("请填写卖家学号、商品名称、售价！");
+                return;
+            }
+            let text = `${goodStuId}|${goodName}|${goodPrice}|${goodDesc}`;
+            navigator.clipboard.writeText(text);
+            alert("闲置商品信息已复制！格式：卖家学号|商品名称|售价|商品描述");
+        }
+
+        // 把闲置商品添加到页面闲置市场
+        function addGoodsToPage(){
+            let goodStuId = document.getElementById("goodStuId").value;
+            let goodName = document.getElementById("goodName").value;
+            let goodPrice = document.getElementById("goodPrice").value;
+            let goodDesc = document.getElementById("goodDesc").value;
+
+            if(!goodStuId || !goodName || !goodPrice){
+                alert("请填写卖家学号、商品名称、售价！");
+                return;
+            }
+
+            let newGoodCard = document.createElement("div");
+            newGoodCard.className = "card";
+            newGoodCard.innerHTML = `
+                <h3 class="card-title">${goodName}</h3>
+                <p><strong>卖家学号：</strong>${goodStuId}</p>
+                <p><strong>售价：</strong>${goodPrice}元</p>
+                <p><strong>商品描述：</strong>${goodDesc}</p>
+            `;
+            document.getElementById("goodsList").appendChild(newGoodCard);
+
+            // 清空闲置表单
+            document.getElementById("goodStuId").value = "";
+            document.getElementById("goodName").value = "";
+            document.getElementById("goodPrice").value = "";
+            document.getElementById("goodDesc").value = "";
+
+            showModule('goodsModule');
+            alert("闲置商品已发布到闲置市场！");
+        }
+    </script>
+
+</body>
+</html>
