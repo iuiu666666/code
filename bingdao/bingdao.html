@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冰岛</title>
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./bingdao.css">
+    <link rel="shortcut icon" href="./bingdao/qizi_16x16.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./sucai/font_5086381_iaon7i8wlqe/download (1)/font_5086381_6j4984p4muw/iconfont.css">
+</head>
+<body>
+    <!-- 快捷导航 -->
+    <div class="shortcut">
+        <div class="wrapper">
+            <ul>
+                <li><a href="./bingdaodenglu.html" target="_blank">请先登录</a></li>
+                <li><a href="./bingdaozhuce.html" target="_blank">免费注册</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">在线客服</a></li>
+                <li><a href=""><span class="iconfont icon-mobile-phone"></span>手机版</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 头部  -->
+    <div class="header">
+        <div class="wrapper">
+            <div class="logo">
+                <h1><a href="https://baike.baidu.com/item/%E5%86%B0%E5%B2%9B/26889">冰岛</a></h1>
+            </div>
+            <div class="nev">
+                <ul>
+                    <li><a href="./bingdao.html" class="active">首页</a></li>
+                    <li><a href="#play" target="_blank">冰岛玩哪</a></li>
+                    <li><a href="#food" target="_blank">美食推荐</a></li>
+                    <li><a href="#live" target="_blank">住宿区域</a></li>
+                    <li><a href="#suggest" target="_blank">游玩建议</a></li>
+                    <li><a href=" " target="_blank">签证入境</a></li>
+                    <li><a href="" target="_blank" >...</a></li>
+                </ul>
+            </div>
+            <div class="user">
+                <a href="">
+                    <img src="./guangdong/touxiang.png" alt="">
+                    <span>lUlU</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 轮播 -->
+    <div class="container">
+        <div class="track">
+            <div class="item"><img src="./bingdao/微信图片_20260206121111_20_2.jpg" alt="冰岛雪山"></div>
+            <div class="item"><img src="./bingdao/微信图片_20260206121057_18_2.jpg" alt="冰岛瀑布"></div>
+            <div class="item"><img src="./bingdao/微信图片_20260206121104_19_2.jpg" alt="冰岛雪山"></div>
+           <div class="item"><img src="./bingdao/微信图片_20260206121116_21_2.jpg" alt="冰岛雪山"></div>
+            <div class="item"><img src="./bingdao/微信图片_20260206121124_22_2.jpg" alt="冰岛雪山"></div>
+        </div>
+        <button class="btn prev-btn">&lt;</button>
+        <button class="btn next-btn">&gt;</button>
+    </div>
+
+    <script>
+        const track = document.querySelector('.track');
+        const items = document.querySelectorAll('.item');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+        let itemWidth; 
+
+        function updateCarousel() {
+            itemWidth = items[0].offsetWidth;
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+        window.addEventListener('load', updateCarousel);
+        window.addEventListener('resize', updateCarousel);
+        // 自动
+        let autoPlay = setInterval(() => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }, 3000);
+
+        // 手动
+        nextBtn.addEventListener('click', () => {
+            clearInterval(autoPlay);
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+            autoPlay = setInterval(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }, 3000);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            clearInterval(autoPlay);
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+            autoPlay = setInterval(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }, 3000);
+        });
+    </script>
+
+    <!-- 玩哪 -->
+    <div class="play" id="play">
+        <div class="play1">
+            <a href="">冰岛四大区域</a>     
+        </div>
+        <!-- 1 -->
+        <div class="play2">
+            <div class="play3">
+                <a href="">雷克雅未克 ：世界最北首都的chill感</a>
+                <div class="play4">
+                    <div class="play5"><img src="./bingdao/2.jpg" alt=""></div>
+                    <div class="play6">
+                        <div class="play7">
+                            <a href="" >哈尔格林姆教堂 </a>
+                            <div class="play8">>> 冰岛地标，造型像玄武岩柱。一定要登顶俯瞰雷市，彩色的屋顶像童话世界一样治愈。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="play4">
+                    <div class="play9">
+                        <div class="play7">
+                            <a href="">彩虹街 </a>
+                            <div class="play8">>> 就在教堂正对面，地面彩虹涂鸦超好拍。尽头通向大海和雪山，路边有很多好逛的买手店。</div>
+                        </div>
+                    </div>
+                    <div class="play10"><img src="./bingdao/1.jpg" alt=""></div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="play3">
+                <a href="">黄金圈 ：地球裂缝与地热奇观</a>
+                <div class="play4">
+                    <div class="play5"><img src="./bingdao/3.jpg" alt=""></div>
+                    <div class="play6">
+                        <div class="play7">
+                            <a href="">间歇泉 </a>
+                            <div class="play8">>> 每10分钟喷发一次，水柱能冲上30米高。记得提前准备好手机慢动作拍摄，别被硫磺味熏晕了。</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="play4">
+                    <div class="play9">
+                        <div class="play7">
+                            <a href="">黄金瀑布  </a>
+                            <div class="play8">>> 双层断层瀑布，水量巨大震耳欲聋。晴天时大概率能看到巨型双彩虹，冬季会变成冰瀑布。</div>
+                        </div>
+                    </div>
+                    <div class="play10"><img src="./bingdao/4.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="play2">
+            <div class="play3">
+                <a href="">南部海岸 ：暗黑系大片生产地</a>
+                <div class="play4">
+                    <div class="play9">
+                        <div class="play7">
+                            <a href="">黑沙滩 </a>
+                            <div class="play8">>> 世界尽头的既视感，玄武岩柱墙超酷。警告：一定要远离海水，这就是著名的“杀人浪”，卷走就回不来了！</div>
+                        </div>
+                    </div>
+                    <div class="play10"><img src="./bingdao/5.jpg" alt=""></div>
+                </div>
+                <div class="play4">
+                    <div class="play5"><img src="./bingdao/6.jpg" alt=""></div>
+                    <div class="play6">
+                        <div class="play7">
+                            <a href="">塞里雅兰瀑布 </a>
+                            <div class="play8">>> 可以绕到瀑布后面去的“水帘洞”，但绝对会湿身，记得穿好雨衣和防水鞋，日落时分最美。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 4-->
+            <div class="play3">
+                <a href="">冰河区域 ：冬季限定的蓝色梦境</a>
+                <div class="play4">
+                    <div class="play9">
+                        <div class="play7">
+                            <a href="">杰古沙龙冰河湖</a>
+                            <div class="play8">>> 大块浮冰在湖面静止，偶尔会有海豹探头。如果是极光季，这里是拍极光倒影的绝佳机位。</div>
+                        </div>
+                    </div>
+                    <div class="play10"><img src="./bingdao/7.jpg" alt=""></div>
+                </div>
+                <div class="play4">
+                    <div class="play5"><img src="./bingdao/8.jpg" alt=""></div>
+                    <div class="play6">
+                        <div class="play7">
+                            <a href="">蓝冰洞 </a>
+                            <div class="play8">>> 冬季必去！每年位置都不一样，必须跟团戴冰爪进入。阳光穿透冰层的晶莹剔透感，真的像在艾莎的城堡。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    <!-- 美食 -->
+    <div class="food1" id="food">
+        <h2 class="food2">冰岛美食推荐</h2>
+        <div class="food3">
+            <div class="food4">
+                <div class="food5">
+                    <div class="food6">
+                        <img src="./bingdao/9.jpg" alt="">
+                    </div>
+                    <div class="food8">
+                        <h3>羊肉汤</h3>
+                        <p>羊膻味0%，汤底鲜甜，可免费续碗，配黑麦面包蘸着吃。</p>
+                        <div class="food9">
+                            <a href="https://www.bilibili.com/video/BV1ze4y1E75P/" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="food5">
+                    <div class="food6">
+                        <img src="./bingdao/10.jpg" alt="">
+                    </div>
+                    <div class="food8">
+                        <h3>龙虾热狗</h3>
+                        <p>龙虾肉鲜嫩，裹着面包糠炸得酥脆，是冰岛的炫炸物。</p>
+                        <div class="food9">
+                            <a href="https://www.bilibili.com/video/BV1vaBBBbEBR/" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="food5">
+                    <div class="food6">
+                        <img src="./bingdao/11.jpg" alt="">
+                    </div>
+                    <div class="food8">
+                        <h3>龙虾汤</h3>
+                        <p>汤底浓郁咸鲜，龙虾肉Q弹，是冰岛人冬天的温暖能量。</p>
+                        <div class="food9">
+                            <a href="https://m.xiachufang.com/recipe/104226760/" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="food5">
+                    <div class="food6">
+                        <img src="./bingdao/12.jpg" alt="">
+                    </div>
+                    <div class="food8">
+                        <h3>海鲜意面</h3>
+                        <p>面条Q弹，酱汁浓郁，铺满虾、鲑鱼，鲜美到想舔盘。</p>
+                        <div class="food9">
+                            <a href="https://m.xiachufang.com/recipe/107345005/" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="food5">
+                    <div class="food6">
+                        <img src="./bingdao/13.jpg" alt="">
+                    </div>
+                    <div class="food8">
+                        <h3>肉桂卷</h3>
+                        <p>外皮酥脆，内里松软，肉桂香浓郁，是北欧的甜蜜惊喜。</p>
+                        <div class="food9">
+                            <a href="https://hk.trip.com/moments/detail/reykjavik-1044-120054090/" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="food5">
+                    <div class="food6">
+                        <img src="./bingdao/14.jpg" alt="">
+                    </div>
+                    <div class="food8">
+                        <h3>海鲜汤</h3>
+                        <p>汤底浓郁，海鲜丰富，可无限续汤，是冰岛特色。</p>
+                        <div class="food9">
+                            <a href="https://www.bilibili.com/video/BV1wq4y1p7Qx/" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <button class="food7 prev-btn">&lt;</button>
+            <button class="food7 next-btn">&gt;</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // 顶部大图
+            const track = document.querySelector('.track');
+            const items = document.querySelectorAll('.item');
+            const prevBtn = document.querySelector('.btn.prev-btn');
+            const nextBtn = document.querySelector('.btn.next-btn');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                updateCarousel();
+            });
+
+            // 卡片
+            const cardWrapper = document.querySelector('.food4');
+            const cardPrevBtn = document.querySelector('.food7.prev-btn');
+            const cardNextBtn = document.querySelector('.food7.next-btn');
+            const firstCard = document.querySelector('.food5');
+
+            if (!firstCard) return;
+
+            const scrollDistance = firstCard.offsetWidth + 24;
+
+            cardPrevBtn.addEventListener('click', () => {
+                cardWrapper.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
+            });
+
+            cardNextBtn.addEventListener('click', () => {
+                cardWrapper.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+            });
+            });
+    </script>
+  
+    <!-- 住宿 -->
+    <div class="background" id="live">
+        <!-- 左 -->
+        <div class="left">
+            <div>
+                <h2>住宿区域</h2>
+            </div>
+
+            <ul>
+            <li onclick="showTab(1)">Hótel Jökulsárlón</li>
+            <li onclick="showTab(2)">Black Beach Suites </li>
+            <li onclick="showTab(3)">Vik apartment </li>
+            <li onclick="showTab(4)">Silica Hotel</li>
+            <li onclick="showTab(5)">Baron's Hostel </li>
+            <li onclick="showTab(6)">The Retreat</li>
+            </ul>
+        </div>
+
+        <!-- 右侧 -->
+        <div class="right">
+            <div class="tab active" id="tab1">
+                <h1>Hótel Jökulsárlón</h1>
+                <div class="tuijian">
+                    <a href="">20%人推荐 ></a>
+                </div>
+                <div class="jieshao">
+                    <div class="photo">
+                        <img src="./bingdao/15.jpg" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <p class="first">住进冰川湖畔</p>
+                        <p>泡雪山温泉，看极光</p>
+                        <p>是冰岛小众体验天花板</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab active" id="tab2">
+                <h1>Black Beach Suites </h1>
+                <div class="tuijian">
+                    <a href="">11%人推荐 ></a>
+                </div>
+                <div class="jieshao">
+                    <div class="photo">
+                        <img src="./bingdao/16.jpg" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <p class="first">独栋别墅</p>
+                        <p>厨房齐全，可自驾</p>
+                        <p>独享黑沙滩美景</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab active" id="tab3">
+                <h1>Vik apartment</h1>
+                <div class="tuijian">
+                    <a href="">11%人推荐 ></a>
+                </div>
+                <div class="jieshao">
+                    <div class="photo">
+                        <img src="./bingdao/17.jpg" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <p class="first">房间宽敞，厨房齐全</p>
+                        <p>对面有商场，购物便利</p>
+                        <p>自带停车场</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab active" id="tab4">
+                <h1>Silica Hotel</h1>
+                <div class="tuijian">
+                    <a href="">10%人推荐 ></a>
+                </div>
+                <div class="jieshao">
+                    <div class="photo">
+                        <img src="./bingdao/18.jpg" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <p class="first">隐于熔岩苔原</p>
+                        <p>独享私汤，人少景美</p>
+                        <p>体验感超绝</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab active" id="tab5">
+                <h1>Baron's Hostel</h1>
+                <div class="tuijian">
+                    <a href="">10%人推荐 ></a>
+                </div>
+                <div class="jieshao">
+                    <div class="photo">
+                        <img src="./bingdao/19.jpg" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <p class="first">前台可中文沟通</p>
+                        <p>干净整洁，厨房大</p>
+                        <p>可在旅馆中看见教堂</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab active" id="tab6">
+                <h1>The Retreat</h1>
+                <div class="tuijian">
+                    <a href=""> 8%人推荐 ></a>
+                </div>
+                <div class="jieshao">
+                    <div class="photo">
+                        <img src="./bingdao/20.jpg" alt="">
+                    </div>
+                    <div class="wenzi">
+                        <p class="first">建于熔岩地层，私汤温泉触手可及</p>
+                        <p>米其林餐厅</p>
+                        <p>疗愈感拉满</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(index) {
+        let tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.getElementById('tab' + index).classList.add('active');
+        }
+    </script>
+
+  <!-- 建议 -->
+   <h1 class="jianyi" id="suggest">游玩建议</h1>
+    <div class="line">
+        <div class="linelist">
+            <div class="node">
+                <div class="nodedot"></div>
+                <div class="nodetext">
+                    <h2>交通</h2>
+                    <div class="shuoming">
+                        <p>冬季（11-3月）路况极差，妖风+暴雪+黑冰，没有雪地驾驶经验千万别自驾，老老实实报团保平安！自驾务必租四驱车+买全险</p>
+                    </div>
+                </div>
+            </div>
+            <div class="node">
+                <div class="nodedot"></div>
+                <div class="nodetext">
+                    <h2>衣物</h2>
+                    <div class="shuoming">
+                        <p>冰岛的风是可以把人吹跑的！一定要穿防风防水的冲锋衣裤，伞在这里就是废铁。一定要带帽子耳罩，不然头会被吹痛</p>
+                    </div>
+                </div>
+            </div>
+            <div class="node">
+                <div class="nodedot"></div>
+                <div class="nodetext">
+                    <h2>预订</h2>
+                    <div class="shuoming">
+                        <p>蓝冰洞和蓝湖温泉必须提前预订，尤其是蓝冰洞名额有限，去了再买票绝对没戏。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="node">
+                <div class="nodedot"></div>
+                <div class="nodetext">
+                    <h2>物价</h2>
+                    <div class="shuoming">
+                        <p>冰岛物价真的很贵，下馆子随随便便几百块。想省钱可以去粉红猪（Bonus）超市买食材自己做，或者带点泡面榨菜</p>
+                    </div>
+                </div>
+            </div>
+            <div class="node">
+                <div class="nodedot"></div>
+                <div class="nodetext">
+                    <h2>APP</h2>
+                    <div class="shuoming">
+                        <p>追极光下Aurora Forecast，看天气下Vedur，查路况看Road.is，这三个是保命神器。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 版权 -->
+    <div class="footer">
+        <!-- 左侧联系信息 -->
+        <div class="footerleft">
+            <a href="#"></a>
+            <ul class="contact">
+                <li>
+                    <i>📞</i>
+                    <div>
+                        <br>1562232xxxx
+                        <span>服务热线</span>
+                    </div>
+                </li>
+                <li>
+                    <i>✉️</i>
+                    <div>
+                        <br>jysf@gpnu.edu.cn
+                        <span>邮箱</span>
+                    </div>
+                </li>
+                <li>
+                    <i>📍</i>
+                    <div>
+                        <br>广州市天河区中山大道西 293 号
+                        <br>河源市东源县东环路教育城内
+                        <span>我们的地址</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 右侧导航链接 -->
+        <div class="footer-right">
+            <div class="all">
+                <h4>游玩</h4>
+                <ul>
+                    <li><a href="#">雷克雅未克</a></li>
+                    <li><a href="#">黄金圈</a></li>
+                    <li><a href="#">南部海岸</a></li>
+                    <li><a href="#">冰河区域</a></li>
+                </ul>
+            </div>
+            <div class="all">
+                <h4>美食</h4>
+                <ul>
+                    <li><a href="#">羊肉汤</a></li>
+                    <li><a href="#">龙虾热狗</a></li>
+                    <li><a href="#">龙虾汤</a></li>
+                    <li><a href="#">海鲜意面</a></li>
+                    <li><a href="#">海鲜汤</a></li>
+                    <li><a href="#">肉桂卷</a></li>
+                </ul>
+            </div>
+
+            <div class="all">
+                <h4>住宿</h4>
+                <ul>
+                    <li><a href="#">Hótel Jökulsárlón</a></li>
+                    <li><a href="#">Black Beach Suites</a></li>
+                    <li><a href="#">Vik apartment</a></li>
+                    <li><a href="#">Silica Hotel </a></li>
+                    <li><a href="#">Baron's Hostel</a></li>
+                    <li><a href="#">The Retreat</a></li>
+                </ul>
+            </div>
+
+            <div class="all">
+                <h4>会员服务</h4>
+                <ul>
+                    <li><a href="#">交通</a></li>
+                    <li><a href="#">衣物</a></li>
+                    <li><a href="#">预订</a></li>
+                    <li><a href="#">物价</a></li>
+                    <li><a href="#">APP</a></li>
+                </ul>
+            </div>
+
+                <!-- 图 -->
+                <div class="icon">
+                    <a href="#">wx</a>
+                    <a href="#">知</a>
+                    <a href="#">in</a>
+                    <a href="#">f</a>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <!-- 最下面 -->
+    <div class="copyright">
+        <div class="wrapper">
+        <p>
+            <a href="">关于冰岛</a>|
+            <a href="">帮助中心</a> |
+            <a href="">出行服务</a> |
+            <a href="">商务合作</a> |
+            <a href="">搜索推荐</a> |
+            <a href="">友情链接</a>
+        </p>
+        <p>
+            Copyright @ lUlU
+        </p>
+    </div>
+    </div>
+</body>
+</html>
